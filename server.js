@@ -116,7 +116,7 @@ app.get('/:articleName',function(req,res) {
 const pool = new Pool(config);/////////
 app.get('/test-db', function(req ,res){
    pool.connect();
-  pool.query('SELECT * FROM p_book', function(err, result)
+  pool.query('SELECT * FROM test', function(err, result)
   {
     if(err){
         //console.log(err,result);
