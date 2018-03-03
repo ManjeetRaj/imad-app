@@ -124,7 +124,7 @@ app.get('/:test-db',function(req,res){
        }else{
            res.send(JSON.stringify(result.rows));
        }
-   });
+    });
 });
 
 app.get('/ui/style.css', function (req, res) {
