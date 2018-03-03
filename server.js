@@ -113,22 +113,21 @@ app.get('/:articleName',function(req,res) {
      res.send(createTemplate(articles[articleName]));
 });
 
-const pool = new Pool(config);
-
-app.get('/:test-db',function(req,res){
-   //make a select request
-   //return a response with the results
+const pool = new Pool(config);/////////
+app.get('/test-db', function(req ,res){
    pool.connect();
-   pool.query('SELECT * FROM test',function(err,result){
-       if(err){
-           res.status(500).send(err.toString());
-       }else{
-          // res.send(JSON.stringify(result.rows));
-          res.send(result.toString());
-         
-       }
-       pool.end();
-    });
+  pool.query('SELECT * FROM p_book', function(err, result)
+  {
+    if(err){
+        //console.log(err,result);
+        res.status(500).send(err.toString());
+    }
+    else
+    {
+      res.send(result.toString());
+    }
+    pool.end();
+  });
 });
 
 app.get('/ui/style.css', function (req, res) {
