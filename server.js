@@ -1,6 +1,16 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var pool = requre('pg').pool;
+
+var config = {
+    user: 'manjeetrajlakshman',
+    database: 'manjeetrajlakshman',
+    host: 'localhost',
+    port: '5432',
+    passward: process.env.DB_PASSWARD
+  
+};
 
 var app = express();
 app.use(morgan('combined'));
@@ -101,6 +111,20 @@ app.get('/:articleName',function(req,res) {
     //artilcles[articleName]=={} content object for article-one
     var articleName = req.params.articleName;
      res.send(createTemplate(articles[articleName]));
+});
+
+var pool = new pool(config);
+
+app.get('/:test-db',function(req,res){
+   //make a select request
+   //return a response with the results
+   pool.query('SELECT * FROM test',function(err,result){
+       if(err){
+           res.status(500).send(err.toString());
+       }else{
+           res.send(JSON.stringify(result));
+       }
+   });
 });
 
 app.get('/ui/style.css', function (req, res) {
