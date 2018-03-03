@@ -115,7 +115,7 @@ app.get('/:articleName',function(req,res) {
 
 const pool = new Pool(config);/////////
 app.get('/test-db', function(req ,res){
-   pool.connect();
+   //pool.connect();
   pool.query('SELECT * FROM test', function(err, result)
   {
     if(err){
@@ -126,7 +126,7 @@ app.get('/test-db', function(req ,res){
     {
       res.send(result.toString());
     }
-    pool.end();
+    //pool.end();
   });
 });
 
