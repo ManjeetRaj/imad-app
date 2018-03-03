@@ -113,7 +113,7 @@ app.get('/:articleName',function(req,res) {
      res.send(createTemplate(articles[articleName]));
 });
 
-var pool = new Pool(config);
+const pool = new Pool(config);
 
 app.get('/:test-db',function(req,res){
    //make a select request
