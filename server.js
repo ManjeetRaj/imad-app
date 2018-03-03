@@ -8,7 +8,7 @@ var config = {
     database: 'manjeetrajlakshman',
     host: 'db.imad.hasura-app.io',
     port: '5432',
-    passward: process.env.DB_PASSWARD
+    passward: process.env.DB_PASSWORD
   
 };
 
