@@ -6,7 +6,7 @@ var Pool = requre('pg').Pool;
 var config = {
     user: 'manjeetrajlakshman',
     database: 'manjeetrajlakshman',
-    host: 'localhost',
+    host: 'db.imad.hasura-app.io',
     port: '5432',
     passward: process.env.DB_PASSWARD
   
@@ -122,7 +122,8 @@ app.get('/:test-db',function(req,res){
        if(err){
            res.status(500).send(err.toString());
        }else{
-           res.send(JSON.stringify(result.rows));
+          // res.send(JSON.stringify(result.rows));
+          res.send(result.toString());
        }
     });
 });
